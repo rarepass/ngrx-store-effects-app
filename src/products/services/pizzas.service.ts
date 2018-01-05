@@ -16,7 +16,7 @@ export class PizzasService {
       .get<Pizza[]>(`/api/pizzas`)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
-
+  
   createPizza(payload: Pizza): Observable<Pizza> {
     return this.http
       .post<Pizza>(`/api/pizzas`, payload)

@@ -18,11 +18,11 @@ import { Pizza } from '../../models/pizza.model';
         </a>
       </div>
       <div class="products__list">
-        <div *ngIf="!((pizzas | async)?.length)">
+        <div *ngIf="!((pizzas$ | async)?.length)">
           No pizzas, add one to get started.
         </div>
         <pizza-item
-          *ngFor="let pizza of (pizzas | async)"
+          *ngFor="let pizza of (pizzas$ | async)"
           [pizza]="pizza">
         </pizza-item>
       </div>
@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() { 
     this.pizzas$ = this.store.select<any>(fromStore.getAllPizzas);
-    this.store.dispatch(new fromStore.LoadPizzas());
-    this.store.dispatch(new fromStore.LoadToppings());
+    //this.store.dispatch(new fromStore.LoadPizzas());
+    //this.store.dispatch(new fromStore.LoadToppings());
    }
 }
